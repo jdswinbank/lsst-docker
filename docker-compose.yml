@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  lsst:
+    container_name: lsst
+    image: jds/lsst
+    volumes:
+       - type: bind
+         source: /Users/jds/Projects/LSST/src
+         target: /mnt/lsst/src
+    tty: true
+    stdin_open: true
