@@ -1,11 +1,17 @@
-$ docker build -t jds/lsst . --ssh default=$SSH_AUTH_SOCK --build-arg LSST_TAG=7-stack-lsst_distrib-w_2019_42
+Old:
+
+# $ docker build -t jds/lsst . --ssh default=$SSH_AUTH_SOCK --build-arg LSST_TAG=7-stack-lsst_distrib-w_2019_42
+
+New (note: enable experimental features in Dokcer Desktop):
+
+$ docker buildx build -t jds/lsst . --ssh default=$SSH_AUTH_SOCK --build-arg LSST_TAG=7-stack-lsst_distrib-w_2019_42
 
 (Or miss out --build-arg to get w_latest).
 
 
-$ docker-compose -d up
+$ docker-compose up -d
 
-$ docker exec -it --rm lsst /bin/bash -l  # Note login shell to pick up shell initialization
+$ docker exec -it lsst /bin/bash -l  # Note login shell to pick up shell initialization
 
 
 $ docker-compose down
