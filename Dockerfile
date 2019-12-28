@@ -6,7 +6,7 @@ ARG LSST_TAG
 LABEL maintainer="John Swinbank <swinbank@lsst.org>"
 
 USER root
-RUN yum -y install stow zip unzip
+RUN yum -y install stow zip unzip rh-git29
 
 
 
@@ -14,6 +14,7 @@ RUN yum -y install stow zip unzip
 USER lsst
 ENV LSST_TAG ${LSST_TAG}
 COPY source_lsst.sh /etc/profile.d
+COPY rh-git29.sh /etc/profile.d
 COPY bash_local /home/lsst/.bash_local
 RUN conda config --set changeps1 false
 RUN conda install ipython
