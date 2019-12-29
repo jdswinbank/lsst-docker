@@ -8,8 +8,10 @@ LABEL maintainer="John Swinbank <swinbank@lsst.org>"
 USER root
 RUN yum -y install stow zip unzip rh-git29
 
-
-
+# Workaround for git worktree: needs to be
+# able to use the same path as on the host.
+RUN mkdir -p /Users/jds/Projects/LSST
+RUN ln -s /mnt/lsst/src /Users/jds/Projects/LSST/src
 
 USER lsst
 ENV LSST_TAG ${LSST_TAG}
